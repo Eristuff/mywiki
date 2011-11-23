@@ -1,0 +1,14 @@
+<%= form_for @word, :url => { :action => "create" }, :html => {:multipart => true } do |f| %>
+  New word: <%= f.text_field :word %><br />
+  Definition: <%= f.text_area :def %><br />
+  <input type="hidden" name="hidewd" id="allword" />
+  <select name="wordlist" id="Selectbox" multiple="multiple" >
+    <% @allword.each do |aw|%>
+      <option NAME="boxword" value="<%= aw.id %>" ONCLICK="outputSelected(this.form.wordlist.options);"  ><%= aw.word %></option>
+    <% end %>
+  </select>
+  <%= f.submit  %>
+<% end %>
+
+
+

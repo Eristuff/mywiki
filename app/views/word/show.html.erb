@@ -1,0 +1,12 @@
+<p> Word : <%= @word.word %></p>
+<p>Definition : <%= @word.def %></p>
+<p>Created at : <%= @word.created_at  %></p>
+<p>Updated at : <%= @word.updated_at  %></p>
+<p><%= link_to "Edit word", "/word/edit/#{@word.word.to_s}" %></p>
+<p><%= link_to "Delete word", "/word/delete/#{@word.word.to_s}" %></p>
+<% @allwd.each do |awd| %>
+
+  <% wd = Words.find(:first, :conditions => ["id = ?", awd]) %>
+  <%= link_to wd.word , "/word/show/#{wd.word.to_s}"%>
+  <br />
+<% end %>

@@ -1,0 +1,8 @@
+<p>Last 10 words</p>
+<% @allword.each do |words| %>
+  <p><%= link_to words.word, "/word/show/#{words.word}" %>
+  <%= link_to "Edit word", "/word/edit/#{words.word.to_s}" %>
+  <%= link_to "Delete word", "/word/delete/#{words.word.to_s}" %></p>
+<% end %>
+
+

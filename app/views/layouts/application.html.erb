@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Mywiki</title>
+  <%= stylesheet_link_tag    "application" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<h1><%= link_to "Mywiki", "/" %></h1>
+<p><%= link_to "Add new word", "/word/new" %></h1>
+<% if @allword.count > 0 %>
+  <%= form_for @allword, :url => { :action => "show" }, :html => {:multipart => true } do |f| %>
+    Shearch word: <%= f.text_field :word %><br />
+    <%= f.submit "Find word" %>
+  <% end %>
+<% end %>
+
+<%= yield %>
+
+</body>
+</html>

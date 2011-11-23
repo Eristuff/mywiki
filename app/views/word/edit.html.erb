@@ -1,0 +1,25 @@
+<%= form_for @word, :url => { :action => "update" }, :html => {:multipart => true } do |f| %>
+  Edit word: <%= @word.word %><br />
+  <%= f.hidden_field :word %><br />
+  Definition: <%= f.text_area :def %><br />
+
+  <input type="hidden" name="hidewd" id="allword" />
+  <select name="wordlist" id="Selectbox" multiple="multiple" >
+    <% @allword.each do |aw|%>
+      <% @allwd.each do |assoword| %>
+        <% if assoword.to_s == aw.id.to_s %>
+	  <% @flag = 1 %>
+        <% end %>
+      <% end %>
+	<% if @flag == 1 %>
+          <option selected="selected" NAME="boxword" value="<%= aw.id %>" ONCLICK="outputSelected(this.form.wordlist.options);"  ><%= aw.word %></option>
+	<% else %>
+	  <option NAME="boxword" value="<%= aw.id %>" ONCLICK="outputSelected(this.form.wordlist.options);"  ><%= aw.word %></option>
+	<% end %>
+	<% @flag = 0 %>
+    <% end %>
+  </select>
+
+
+  <%= f.submit %>
+<% end %>
